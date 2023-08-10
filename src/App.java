@@ -37,5 +37,9 @@ public class App {
         vendedor.setNome("Corno Manso");
         vendedorDao.update(vendedor);
         System.out.println("Update finalizado");
+
+        System.out.println("\n=== TEST 6: Vendedor Delete ===");
+        vendedorDao.deleteById(8);
+        System.out.println("Delete completo");
     }
 }
