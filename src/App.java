@@ -31,5 +31,11 @@ public class App {
         4000.0, departamento);
         vendedorDao.insert(novoVendedor);
         System.out.println("Inserido! Novo ID = "+ novoVendedor.getId());
+
+        System.out.println("\n=== TEST 5: Vendedor Update ===");
+        vendedor = vendedorDao.finfById(1);
+        vendedor.setNome("Corno Manso");
+        vendedorDao.update(vendedor);
+        System.out.println("Update finalizado");
     }
 }
