@@ -1,5 +1,8 @@
+import entidades.Departamento;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Departamento obj = new Departamento(1, "Books");
+        System.out.println(obj);
     }
 }
