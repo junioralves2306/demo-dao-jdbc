@@ -19,5 +19,11 @@ public class App {
             System.out.println(obj);
         }
 
+        System.out.println("\n=== TEST 3: Vendedor findAll ===");
+        lista = vendedorDao.findAll();
+        for(Vendedor obj : lista){
+            System.out.println(obj);
+        }
+
     }
 }

@@ -92,8 +92,45 @@ public class VendedorDaoJDBC implements VendedorDao {
 
     @Override
     public List<Vendedor> findAll() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findAll'");
+        PreparedStatement st = null;
+        ResultSet rs = null;
+        try {
+            st = conn.prepareStatement(
+                "SELECT seller.*,department.Name as DepName "
+                +"FROM seller INNER JOIN department "
+                +"ON seller.DepartmentId = department.Id "
+                +"ORDER BY Name");
+
+            rs = st.executeQuery();
+
+            List<Vendedor> lista = new ArrayList<>();
+            Map<Integer, Departamento> map = new HashMap<>();
+
+            while(rs.next()){
+
+                /* Foi criado um Map para armazenar os departamentos e evitar repetição na memória.
+                 * o map.get verifica se já existe um departamento com o ID atual armazenado e salva em dep.
+                 * Caso não existe, o departamento é instanciado e armazenado no map, dessa forma na próxima
+                 * execução ele já estará armazenado.
+                 */
+                Departamento dep = map.get(rs.getInt("DepartmentId"));
+                if(dep==null){
+                    dep = instanciarDepartamento(rs);
+                    map.put(rs.getInt("DepartmentId"), dep);
+                }
+
+                Vendedor obj = instanciarVendedor(rs, dep);
+                lista.add(obj);
+                
+            }
+            return lista;
+        } catch (SQLException e) {
+            throw new DbException(e.getMessage());
+        }
+        finally{
+            DB.closeStatement(st);
+            DB.closeResultSet(rs);
+        }
     }
 
     @Override
