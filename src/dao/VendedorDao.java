@@ -2,6 +2,7 @@ package dao;
 
 import java.util.List;
 
+import entidades.Departamento;
 import entidades.Vendedor;
 
 public interface VendedorDao {
@@ -11,5 +12,6 @@ public interface VendedorDao {
     void deleteById(Integer id);
     Vendedor finfById(Integer id);
     List<Vendedor> findAll();
+    List<Vendedor> finByDepartment(Departamento departamento);
 
 }
