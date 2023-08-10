@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.List;
 import dao.DaoFactory;
 import dao.VendedorDao;
@@ -25,5 +26,10 @@ public class App {
             System.out.println(obj);
         }
 
+        System.out.println("\n=== TEST 4: Vendedor Insert ===");
+        Vendedor novoVendedor = new Vendedor(null, "Greg", "greg@gmail.com", new Date(), 
+        4000.0, departamento);
+        vendedorDao.insert(novoVendedor);
+        System.out.println("Inserido! Novo ID = "+ novoVendedor.getId());
     }
 }
