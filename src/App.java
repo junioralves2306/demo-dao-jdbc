@@ -1,5 +1,7 @@
 import java.util.Date;
 
+import dao.DaoFactory;
+import dao.VendedorDao;
 import entidades.Departamento;
 import entidades.Vendedor;
 
@@ -9,6 +11,8 @@ public class App {
 
         Vendedor vendedor = new Vendedor(21, "Bob", "bob@gmail.com", new Date(), 
         3000.0, obj);
+
+        VendedorDao vendedorDao = DaoFactory.criarVendedorDao();
 
         System.out.println(vendedor);
     }
