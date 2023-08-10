@@ -49,19 +49,19 @@ public class Vendedor implements Serializable {
         this.email = email;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
-    public String getSalarioBase() {
+    public Double getSalarioBase() {
         return salarioBase;
     }
 
-    public void setSalarioBase(String salarioBase) {
+    public void setSalarioBase(Double salarioBase) {
         this.salarioBase = salarioBase;
     }
 
